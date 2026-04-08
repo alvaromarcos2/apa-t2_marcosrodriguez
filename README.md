@@ -128,19 +128,7 @@ Tests unitarios de las funciones incluidas en este módulo:
 
 def esPrimo(numero):
     """
-    Determina si un número natural mayor que uno es primo.
-    Argumentos:
-        numero: número natural mayor que 1.
-    Salida:
-        True si numero es primo, False en caso contrario.
-    Raises:
-        TypeError: si numero no es un entero mayor que 1.
-    >>> esPrimo(2)
-    True
-    >>> esPrimo(4)
-    False
-    >>> esPrimo(17)
-    True
+    Mira si un número natural mayor que uno es primo.
     """
     if not isinstance(numero, int) or numero < 2:
         raise TypeError("El argumento debe ser un número natural mayor que uno.")
@@ -152,30 +140,14 @@ def esPrimo(numero):
 
 def primos(numero):
     """
-    Devuelve una tupla con todos los números primos menores que numero.
-    Argumentos:
-        numero: número natural que actúa como límite superior (excluido).
-    Salida:
-        Tupla con los números primos menores que numero.
-    >>> primos(10)
-    (2, 3, 5, 7)
-    >>> primos(2)
-    ()
+    Retorna una tupla con todos los números primos menores que un numero.
     """
     return tuple(n for n in range(2, numero) if esPrimo(n))
 
 
 def descompon(numero):
     """
-    Devuelve una tupla con la descomposición en factores primos de numero.
-    Argumentos:
-        numero: número natural mayor que 1.
-    Salida:
-        Tupla con los factores primos de numero en orden no decreciente.
-    >>> descompon(12)
-    (2, 2, 3)
-    >>> descompon(7)
-    (7,)
+    Retorna una tupla con la descomposición en factores primos de un numero.
     """
     factores = []
     divisor = 2
@@ -189,18 +161,7 @@ def descompon(numero):
 
 def mcm(*numeros):
     """
-    Devuelve el mínimo común múltiplo de un número arbitrario de argumentos.
-    La implementación parte de la descomposición en factores primos de cada
-    argumento: el MCM se obtiene tomando cada factor primo con la mayor
-    potencia en la que aparece en cualquiera de las descomposiciones.
-    Argumentos:
-        *numeros: dos o más números naturales mayores que 1.
-    Salida:
-        Mínimo común múltiplo de todos los argumentos.
-    >>> mcm(90, 14)
-    630
-    >>> mcm(42, 60, 70, 63)
-    1260
+    Retorna el mínimo común múltiplo de un número arbitrario de argumentos.
     """
     factores_max = {}
     for numero in numeros:
@@ -217,18 +178,7 @@ def mcm(*numeros):
 
 def mcd(*numeros):
     """
-    Devuelve el máximo común divisor de un número arbitrario de argumentos.
-    La implementación parte de la descomposición en factores primos de cada
-    argumento: el MCD se obtiene tomando cada factor primo con la menor
-    potencia en la que aparece en todas las descomposiciones.
-    Argumentos:
-        *numeros: dos o más números naturales mayores que 1.
-    Salida:
-        Máximo común divisor de todos los argumentos.
-    >>> mcd(924, 780)
-    12
-    >>> mcd(840, 630, 1050, 1470)
-    210
+    Retorna el máximo común divisor de un número arbitrario de argumentos.
     """
     lista_factores = [descompon(numero) for numero in numeros]
     factores_comunes = set(lista_factores[0])
